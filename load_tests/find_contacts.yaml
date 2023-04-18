@@ -1,0 +1,17 @@
+config:
+  target: "http://localhost:3001"
+  phases:
+    - duration: 10
+      arrivalRate: 400
+  variables:
+    name: "braga"
+    page: 1
+    perPage: 50
+
+scenarios:
+  - name: "Find contacts by name"
+    flow:
+      - get:
+          url: "/contacts/name/{{name}}?page={{page}}&perPage={{perPage}}"
+          expect:
+            - statusCode: 200

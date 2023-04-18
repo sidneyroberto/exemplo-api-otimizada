@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: dev
+      ME_CONFIG_BASICAUTH_PASSWORD: senha123
+  cache:
+    image: redis
+    command: redis-server
+    ports:
+      - 6379:6379
